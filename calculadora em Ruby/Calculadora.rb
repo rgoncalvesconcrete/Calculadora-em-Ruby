@@ -1,22 +1,23 @@
+class Calculadora
 
-        
 continuar = true
+
 
 private
 #Metodo para somar
-def somar(primeiroValor, segundoValor)
+def Calculadora.somar(primeiroValor, segundoValor)
     
     @primeiroValor = primeiroValor
     @segundoValor = segundoValor
 
     total = @primeiroValor + @segundoValor
 
-    return puts "O valor da soma é: #{total}."
+    return total
 end
 
 
 #Metodo para subtrair
-def subtrair(primeiroValor, segundoValor)
+def Calculadora.subtrair(primeiroValor, segundoValor)
     @primeiroValor = primeiroValor
     @segundoValor = segundoValor
 
@@ -24,53 +25,62 @@ def subtrair(primeiroValor, segundoValor)
     if @primeiroValor < 0 || @segundoValor < 0
             
         total = @primeiroValor + @segundoValor
+
+        return total
             
-        return puts "O valor da subtração é: #{total}."
+        #return puts "O valor da subtração é: #{total}."
 
     #Caso contrário, será realizada a subtração normalmente
     else
         total = @primeiroValor - @segundoValor
 
-        return puts "O valor da subtração é: #{total}."
+        return total
+
+        #return puts "O valor da subtração é: #{total}."
     end
 
 end
 
 
 #Metodo para multiplicar
-def multiplicar(primeiroValor, segundoValor)
+def Calculadora.multiplicar(primeiroValor, segundoValor)
     @primeiroValor = primeiroValor
     @segundoValor = segundoValor
 
     total = @primeiroValor * @segundoValor
 
-    return puts "O valor da multiplicação é: #{total}."
+    return total
+
+    #return puts "O valor da multiplicação é: #{total}."
 end
 
 
 #Metodo para dividir
-def dividir(primeiroValor, segundoValor)
+def Calculadora.dividir(primeiroValor, segundoValor)
     @primeiroValor = primeiroValor
     @segundoValor = segundoValor
 
 
     if @segundoValor != 0
-            
+
         total = @primeiroValor / @segundoValor
 
-        return puts "O valor da divisão é: #{total}."
+        return total
+
     else
-            
-        return puts "O dividendo não pode ser 0!"
+          total = "O dividendo não pode ser 0!"
+        return total
+        
     end
     
 end
 
+
 #Metodo para limpar a tela
-def limpatela
+def Calculadora.limpatela
     system 'clear'
 end
-    
+
 begin
         
     print "\n\n\n Escolha uma das opções abaixo:\n
@@ -109,8 +119,10 @@ begin
             print "Informe o segundo valor: "
             segundoValor = gets.chomp.to_i
 
-            somar(primeiroValor, segundoValor)
+            total = somar(primeiroValor, segundoValor)
 
+            puts "O valor da soma é: #{total}"
+            
         when 2
             limpatela
 
@@ -120,7 +132,9 @@ begin
             print "Informe o segundo valor: "
             segundoValor = gets.chomp.to_i
 
-            subtrair(primeiroValor, segundoValor)
+            total = subtrair(primeiroValor, segundoValor)
+
+            puts "O valor da subtração é: #{total}."
                 
 
         when 3
@@ -132,7 +146,9 @@ begin
             print "Informe o segundo valor: "
             segundoValor = gets.chomp.to_i
 
-            multiplicar(primeiroValor, segundoValor)
+            total = multiplicar(primeiroValor, segundoValor)
+
+            puts "O valor da multiplicação é: #{total}."
                 
 
         when 4
@@ -144,8 +160,15 @@ begin
             print "Informe o dividendo valor: "
             segundoValor = gets.chomp.to_i
 
-            dividir(primeiroValor, segundoValor)
-                
+            total = dividir(primeiroValor, segundoValor)
+
+            if total.to_s == "O dividendo não pode ser 0!"
+                puts "O dividendo não pode ser 0!"
+            else
+                puts "O valor da divisão é: #{total}."
+            end
+           
+
 
         when 0
             limpatela
@@ -164,3 +187,6 @@ begin
     end
 
 end while continuar != false
+
+
+end
